@@ -8,7 +8,7 @@ CA = {}
 CA.name = "CyrodiilAlert"
 CA.version = "2.0.1"
 CA.initialised = false
-CA.language = GetString(SI_CYRODIIL_ALERT_LANG)
+CA.language = "en"
 
 -- Default settings.
 CA.defaults = {
@@ -141,6 +141,7 @@ function CA.Initialise(eventCode, addOnName)
     CA.initialised = true   
 --	d("CA Debug: Ran Through Init") 
 
+	CA.language = GetString(SI_CYRODIIL_ALERT_LANG)
 	if(CA.language == "jp") then
 		local fontCommonSettings = "$(CHAT_FONT)|16|soft-shadow-thin"
 		CyrodiilAlertNotify:SetFont(fontCommonSettings)
@@ -719,33 +720,17 @@ function CA.OnAllianceOwnerChanged(eventCode, keepId, battlegroundContext, ownin
 	local newTelvar
 	local oldTelvar
 	if keepType == KEEPTYPE_IMPERIAL_CITY_DISTRICT then
-		newTelvar = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
-		oldTelvar = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
-		newTelvar2 = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
-		oldTelvar2 = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
-	end
-	
-	if (CA.language == "jp") then
-		newTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL),
-							allianceCol:Colorize(allianceName), 
-							CA.colGrn:Colorize(" +"..TVbonus.."% "),
-							"EsoUI/Art/Currency/currency_telvar.dds",
-							CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
-		oldTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL), 
-							oldCol:Colorize(GetAllianceName(oldAlliance)), 
-							CA.colGrn:Colorize(" -"..TVbonus.."% "),
-							"EsoUI/Art/Currency/currency_telvar.dds",
-							CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
-		newTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), 
-							allianceCol:Colorize(allianceName), 
-							CA.colGrn:Colorize(" +"..TVbonus.."% "),
-							"EsoUI/Art/Currency/currency_telvar_32.dds",
-							CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
-		oldTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), 
-							oldCol:Colorize(GetAllianceName(oldAlliance)), 
-							CA.colGrn:Colorize(" -"..TVbonus.."% "),
-							"EsoUI/Art/Currency/currency_telvar_32.dds",
-							CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
+		if (CA.language == "jp") then
+			newTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL), allianceCol:Colorize(allianceName), CA.colGrn:Colorize(" +"..TVbonus.."% "), "EsoUI/Art/Currency/currency_telvar.dds", CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
+			oldTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL), oldCol:Colorize(GetAllianceName(oldAlliance)), CA.colGrn:Colorize(" -"..TVbonus.."% "), "EsoUI/Art/Currency/currency_telvar.dds", CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
+			newTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), allianceCol:Colorize(allianceName), CA.colGrn:Colorize(" +"..TVbonus.."% "), "EsoUI/Art/Currency/currency_telvar_32.dds", CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
+			oldTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), oldCol:Colorize(GetAllianceName(oldAlliance)), CA.colGrn:Colorize(" -"..TVbonus.."% "), "EsoUI/Art/Currency/currency_telvar_32.dds", CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
+		else
+			newTelvar = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
+			oldTelvar = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
+			newTelvar2 = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
+			oldTelvar2 = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
+		end
 	end
 
 	if (CA.vars.chatOutput) then

@@ -5,21 +5,21 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_LANG", "jp")
 --- CyrodiilAlert.lua
 
 -- InitKeeps
-ZO_CreateStringId("SI_CYRODIIL_ALERT_INIT_TEXT", "シロディールアラートが初期化されました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_INIT_TEXT", "シロディールアラートが初期化された")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CAMP_WELCOME", "ようこそ ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CAMP_HOME", "ホームキャンペーン:")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CURRENT_IMPERIAL", "インペラルシティへのアクセス権を所有しています")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL", "インペラルシティへのアクセス権がありません")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CURRENT_IMPERIAL", "インペラルシティへのアクセス権を所有している")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL", "インペラルシティへのアクセス権がない")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTSIDE_CYRODIIL", "シロディールの外の通知はオフです")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CHAT_OUTPUT_ON", "チャット出力はオンです")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CHAT_OUTPUT_OFF", "チャット出力はオフです")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_ON", "オンスクリーン通知はオンです")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OFF", "オンスクリーン通知はオンですf")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CHAT_OUTPUT_ON", "チャット出力はオン")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CHAT_OUTPUT_OFF", "チャット出力はオフ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_ON", "オンスクリーン通知はオン")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OFF", "オンスクリーン通知はオン")
 
 -- DumpChat
 ZO_CreateStringId("SI_CYRODIIL_ALERT_STATUS_TEXT", "シロディールの状況:")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_UNDER_ATTACK", "攻撃されています！")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_ATTACK", "     攻撃されている城はありません")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_UNDER_ATTACK", "攻撃されている！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_ATTACK", "     攻撃されている城はない")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_SIEGES_A", "     包囲攻撃: A:")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_SLASH_D", " / D:")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_SIEGES_ATT", "     包囲攻撃: Att: ")
@@ -31,11 +31,11 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_SIEGES_NONE", "     包囲攻撃: なし")
 
 -- dumpImperial
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY", "インペラルシティ:")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_DISTRICT_UNDER_ATTACK", "      攻撃されている地域はありません")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_DISTRICT_UNDER_ATTACK", "     攻撃されている地域はない")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_AD_NAME", "     アルドメリ・ドミニオン")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_UNLOCKED", "解除")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_UNLOCKED", "アンロック")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_KEEP_CONTROLLED", ", 支配下を維持している: ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCKED", "固定")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCKED", "ロック")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_EP_NAME", "     エボンハート・パクト")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_DC_NAME", "     ダガーフォール・カバナント")
 
@@ -50,51 +50,50 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_SOLO", " (ソロ)")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_QUEUE_POSITION", " キューの位置: ")
 
 -- OnAllianceOwnerChanged
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED", "<<1>> は <<2>> によって占領されました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED", "<<1>> は <<2>> によって占領された")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL", "<<1>> <<2>> |t16:16:<<X:3>>|t (合計 <<4>>)")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2", "<<1>> <<2>> |t30:30:<<X:3>>|t (合計 <<4>>)")
 
 -- OnKeepUnderAttackChanged
-ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_UNDER_ATTACK", " が攻撃されています！")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_NO_LONGER_UNDER_ATTACK", " はもう攻撃されていません")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_UNDER_ATTACK", " が攻撃されている！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_NO_LONGER_UNDER_ATTACK", " はもう攻撃されていない")
 
 -- OnGateChanged
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_OPEN", " が開いています！")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_CLOSED", " が閉まっています！")
 
 -- OnDeposeEmperor
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ABDICATED", "<<1>> <<2>> の皇帝 <<3>> が放棄しました！")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DEPOSED", "<<1>> <<2>> の皇帝 <<3>> が退けられました！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ABDICATED", "<<1>> <<2>> の皇帝 <<3>> が放棄した！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DEPOSED", "<<1>> <<2>> の皇帝 <<3>> が退けられた！")
 
 -- OnCoronateEmperor
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CROWNED_EMPEROR", "<<1>> <<2>> の <<3>> が皇帝に就任しました！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CROWNED_EMPEROR", "<<1>> <<2>> の <<3>> が皇帝に就任した！")
 
 -- OnArtifactControlState
-ZO_CreateStringId("SI_CYRODIIL_ALERT_PICKED_UP", "<<1>> <<2>> の <<3>> が <<4>> を獲得しました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_TAKEN", "<<1>> <<2>> の <<3>> が <<4>> から <<5>> を奪取しました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_DROPPED", "<<1>> <<2>> の <<3>> が <<4>> を落としました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_SECURED", "<<1>> <<2>> の <<3>> が <<4>> で <<5>> を守りました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RETURNED", "<<1>> <<2>> の <<3>> が <<4>> を <<5>> に戻しました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_TIMEOUT", "<<1>> <<2>> が <<3>> に戻されました（タイムアウト）")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_PICKED_UP", "<<1>> <<2>> の <<3>> が <<4>> を獲得した")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_TAKEN", "<<1>> <<2>> の <<3>> が <<4>> から <<5>> を奪取した")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_DROPPED", "<<1>> <<2>> の <<3>> が <<4>> を落とした")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_SECURED", "<<1>> <<2>> の <<3>> が <<4>> で <<5>> を守りた")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RETURNED", "<<1>> <<2>> の <<3>> が <<4>> を <<5>> に戻した")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_TIMEOUT", "<<1>> <<2>> が <<3>> に戻された（タイムアウト）")
 
 -- OnObjectiveControlState
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED2", "<<1>> が <<2>> を占領されました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RECAPTURED", "<<1>> が <<2>> を再占領しました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_FALLEN", "<<1>> が　<<2>> を has fallen to ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_CONTROL", "<<1>> は 支配なしに落ちました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED2", "<<1>> が <<2>> を占領した")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RECAPTURED", "<<1>> が <<2>> を再占領した")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_CONTROL", "<<1>> は 支配なしに落ちた")
 
 -- OnClaimKeep
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CLAIMED", "<<1>> <<2>> は <<3>> の <<4>> を主張しました"
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CLAIMED", "<<1>> <<2>> は <<3>> の <<4>> を主張した")
 
 -- OnImperialAccessGained
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS", "<<1>> はインペリアルシティへのアクセス権を手にいれました！")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS", "<<1>> はインペリアルシティへのアクセス権を手にいれた！")
 
 -- OnImperialAccessLost
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_LOST_ACCESS", "<<1>> はインペリアルシティへのアクセス権を失いました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_LOST_ACCESS", "<<1>> はインペリアルシティへのアクセス権を失いた")
 
 -- CAslash
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF", "シロディールの外の通知はオフになりました")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON", "シロディールの外の通知はオンになりました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF", "シロディールの外の通知はオフ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON", "シロディールの外の通知はオン")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_HELP", "スラッシュコマンドが利用可能です: show, hide, status, attacks, imperial, ic, init, out, clear, help")
 
 
@@ -162,7 +161,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_KEEP_STATUS", "保持中施設状況")
 
 -- Reinitialize
 ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TITLE", "再初期化")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TEXT", "also available via '/ca init'")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TEXT", "'/ca init'も使用可能")
 
 -- Update Status
 ZO_CreateStringId("SI_CYRODIIL_ALERT_UPDATE_STATUS_NAME", "更新状況")
@@ -171,7 +170,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_DUBIOUS_OUTSIDE_CY_WARNING", "シロディ�
 
 -- Output status to chat
 ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TITLE", "チャットに状況を出力")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TEXT", "also available via '/ca attacks' and '/ca status'")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TEXT", "'/ca attacks' and '/ca status'も使用可能")
 
 -- List attacks
 ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_ATTACKS_NAME", "攻撃の一覧")
@@ -183,7 +182,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_STATUS_TOOLTIP", "全ての保持中�
 
 -- Imperial City
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TITLE", "インペリアルシティ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TEXT", "also available via '/ca ic', '/ca ic all', '/ca ic access', or '/ca ic districts'")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TEXT", "'/ca ic', '/ca ic all', '/ca ic access', or '/ca ic districts'も使用可能")
 
 -- Access & Districts
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ACCESS_DISTRICTS_NAME", "アクセスと地域")
@@ -225,7 +224,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_NAME", "皇帝�
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_TOOLTIP", "皇帝に関する通知を受け取る")
 
 -- Enable Imperial City Access Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_NAME", "インペリアルシティのアクセスに関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_NAME", "インペリアルシティのアクセスに関する通知を\n有効にする")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_TOOLTIP", "インペリアルシティのアクセスに関する通知を受け取る")
 
 -- Enable Queue Notification

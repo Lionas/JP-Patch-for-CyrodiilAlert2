@@ -378,7 +378,7 @@ function CA.CreateConfigMenu()
 			text = "\nVersion |c60FF60" .. CA.version .. "|r by @Enodoc, Savant of the United Explorers of Scholarly Pursuits (UESP)\nUESP: The Unofficial Elder Scrolls Pages - A collaborative source for all knowledge on the Elder Scrolls series since 1995. Find us at www.uesp.net\n\nVersions prior to 1.0.0 by @Tanthul, Leader of the Dark Moon PVP Guild operating on the EU Scourge campaign. (AKA Nodens)\n\nAll rights reserved.",
 		},
 	}
-	LAM:RegisterOptionControls(CA.name.."Config", ConfigData)
+	LAM:RegisterOptionControls(CA.name..GetString(SI_CYRODIIL_ALERT_CONFIG), ConfigData)
 
 	
 end -- CA.CreateConfigMenu

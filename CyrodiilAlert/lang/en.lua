@@ -284,9 +284,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP", "Get notifi
 -- Enable Gate Notifications
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_NAME", "Enable Gate Notifications")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_TOOLTIP", "Get notifications about Artifact Gates")
-!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_WARNING", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 -- Enable Scroll Notifications
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_NAME", "Enable Scroll Notifications")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_TOOLTIP", "Get notifications about Elder Scrolls")
-!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_WARNING", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
