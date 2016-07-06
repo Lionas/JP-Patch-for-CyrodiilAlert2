@@ -1,0 +1,31 @@
+<GuiXml>
+    <Controls>
+        <TopLevelControl name="CyrodiilAlert" mouseEnabled="false" movable="false" clampedToScreen="true">
+            <Dimensions x="800" y="150" />
+
+			<OnMouseEnter>
+				CyrodiilAlert:SetAlpha(1)
+			</OnMouseEnter>
+
+			<OnMoveStart>
+				CA.MoveStart()
+			</OnMoveStart>
+
+			<OnMoveStop>
+				CA.MoveStop()
+			</OnMoveStop>
+
+            <Controls>
+
+                <Backdrop name="$(parent)BG" inherits="ZO_DefaultBackdrop" />
+
+                <Label name="$(parent)Notify" font="ZoFontWinH2" color="FFFFFF" inheritAlpha="true" wrapMode="ELLIPSIS" verticalAlignment="TOP" horizontalAlignment="CENTER" text="" />
+				
+				<Label name="$(parent)NotifyTaken" font="ZoFontWinH2" color="FFFFFF" inheritAlpha="true" wrapMode="ELLIPSIS" verticalAlignment="TOP" horizontalAlignment="CENTER" text="" />
+				
+				<Label name="$(parent)NotifyExtra" font="ZoFontWinH2" color="FFFFFF" inheritAlpha="true" wrapMode="ELLIPSIS" verticalAlignment="TOP" horizontalAlignment="CENTER" text="" />
+
+            </Controls>
+        </TopLevelControl>
+    </Controls>
+</GuiXml>
