@@ -25,3 +25,6 @@ Libs/LibAddonMenu-2.0/controls/texture.lua
 CyrodiilAlert.lua
 CyrodiilAlertConfig.lua
 CyrodiilAlert.xml
+
+lang/en.lua
+lang/$(language).lua

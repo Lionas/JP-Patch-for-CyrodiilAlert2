@@ -1,4 +1,4 @@
--- Cyrodiil Alert
+﻿-- Cyrodiil Alert
 -- Original Author: @Tanthul, Dark Moon Guild (Scourge EU)
 -- Updated by: @Enodoc, UESP
 -- Thanks to @Garkin for AvA Messages code
@@ -8,6 +8,7 @@ CA = {}
 CA.name = "CyrodiilAlert"
 CA.version = "2.0.1"
 CA.initialised = false
+CA.language = GetString(SI_CYRODIIL_ALERT_LANG)
 
 -- Default settings.
 CA.defaults = {
@@ -139,6 +140,14 @@ function CA.Initialise(eventCode, addOnName)
     CA.CreateConfigMenu()
     CA.initialised = true   
 --	d("CA Debug: Ran Through Init") 
+
+	if(CA.language == "jp") then
+		local fontCommonSettings = "$(CHAT_FONT)|16|soft-shadow-thin"
+		CyrodiilAlertNotify:SetFont(fontCommonSettings)
+		CyrodiilAlertNotifyTaken:SetFont(fontCommonSettings)
+		CyrodiilAlertNotifyExtra:SetFont(fontCommonSettings)
+	end
+
 end
 
 
@@ -193,22 +202,22 @@ end
 
 function CA.InitKeeps()
 
-	local initText = CA.colOng:Colorize("Cyrodiil Alert Initialized")
-	local campWelcome = CA.colWht:Colorize("Welcome to ") .. CA.colGrn:Colorize(CA.campaignName) .. CA.colWht:Colorize("!")
-	local campHome = CA.colWht:Colorize("Home Campaign: ") .. CA.colGrn:Colorize(CA.campaignName)
+	local initText = CA.colOng:Colorize(GetString(SI_CYRODIIL_ALERT_INIT_TEXT))
+	local campWelcome = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_CAMP_WELCOME)) .. CA.colGrn:Colorize(CA.campaignName) .. CA.colWht:Colorize("!")
+	local campHome = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_CAMP_HOME)) .. CA.colGrn:Colorize(CA.campaignName)
 	local icEntryStatus
 	if (DoesAllianceHaveImperialCityAccess(CA.campaignId,myAlliance)) and (IsCollectibleUnlocked(GetImperialCityCollectibleId())) then
-		icEntryStatus = CA.colWht:Colorize("You currently have Imperial City access")
+		icEntryStatus = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_CURRENT_IMPERIAL))
 	elseif (not DoesAllianceHaveImperialCityAccess(CA.campaignId,myAlliance)) and (IsCollectibleUnlocked(GetImperialCityCollectibleId())) then
-		icEntryStatus = CA.colGry:Colorize("You do not have Imperial City access")
+		icEntryStatus = CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL))
 	else
 		icEntryStatus = ""
 	end
-	local outOff = CA.colGry:Colorize("Notifications outside of Cyrodiil are OFF")
-	local chatOn = CA.colWht:Colorize("Chat output is On")
-	local chatOff = CA.colGry:Colorize("Chat output is Off")
-	local notiOn = CA.colWht:Colorize("On-Screen Notifications are On")
-	local notiOff = CA.colWht:Colorize("On-Screen Notifications are Off")
+	local outOff = CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_OUTSIDE_CYRODIIL))
+	local chatOn = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_CHAT_OUTPUT_ON))
+	local chatOff = CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_CHAT_OUTPUT_OFF))
+	local notiOn = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_NOTIFICATION_ON))
+	local notiOff = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_NOTIFICATION_OFF))
 
 	if (CA.timerId) then
 		CA_ACE:CancelTimer(CA.timerId)
@@ -290,9 +299,9 @@ end
 
 function CA.dumpChat()
 
-	local statusText = CA.colGry:Colorize("Cyrodiil Status:")
-	local uaText = CA.colRed:Colorize("Under Attack!")
-	local noAttacks = CA.colWht:Colorize("     No keeps are under attack")
+	local statusText = CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_STATUS_TEXT))
+	local uaText = CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK))
+	local noAttacks = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_NO_ATTACK))
 
 	local attTot = 0
 	d(statusText)
@@ -328,14 +337,14 @@ function CA.dumpChat()
 		local attackSiege = allSiege - defendSiege
 		if (allSiege ~= 0) then
 			if (CA.vars.siegesAttDef) and (CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: A:") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / D:") .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_A)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_D)) .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
 			elseif (CA.vars.siegesAttDef) and (not CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: Att: ") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / Def:") .. CA.colGrn:Colorize(defendSiege))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_ATT)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_DEF)) .. CA.colGrn:Colorize(defendSiege))
 			elseif (not CA.vars.siegesAttDef) and (CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: AD: ") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", DC: ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", EP: ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_AD)) .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DC)) .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EP)) .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
 			end
 		elseif (allSiege == 0) and ((CA.vars.siegesAttDef) or (CA.vars.siegesByAlliance)) then
-			d(CA.colWht:Colorize("     Sieges: None"))
+			d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_NONE)))
 		end
 		end
 	end
@@ -371,14 +380,14 @@ function CA.dumpChat()
 		local attackSiege = allSiege - defendSiege
 		if (allSiege ~= 0) then
 			if (CA.vars.siegesAttDef) and (CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: A:") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / D:") .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_A)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_D)) .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
 			elseif (CA.vars.siegesAttDef) and (not CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: Att: ") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / Def:") .. CA.colGrn:Colorize(defendSiege))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_ATT)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_DEF)) .. CA.colGrn:Colorize(defendSiege))
 			elseif (not CA.vars.siegesAttDef) and (CA.vars.siegesByAlliance) then
-				d(CA.colWht:Colorize("     Sieges: AD: ") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", DC: ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", EP: ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
+				d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_AD)) .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DC)) .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EP)) .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")"))
 			end
 		elseif (allSiege == 0) and ((CA.vars.siegesAttDef) or (CA.vars.siegesByAlliance)) then
-			d(CA.colWht:Colorize("     Sieges: None"))
+			d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_NONE)))
 		end
 		end
 	end
@@ -444,7 +453,7 @@ function CA.dumpImperial()
 	local ADlockCol
 	local EPlockCol
 	local DClockCol
-	d(CA.colGry:Colorize("Imperial City:"))
+	d(CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_IMPERIAL_CITY)))
 	if not IsCollectibleUnlocked(GetImperialCityCollectibleId()) then
 		ADlockCol = CA.colGry
 	elseif ICAccessCounterAD < ICNumKeepsAD then
@@ -453,9 +462,9 @@ function CA.dumpImperial()
 		ADlockCol = CA.colGrn
 	end
 	if DoesAllianceHaveImperialCityAccess(CA.campaignId,ALLIANCE_ALDMERI_DOMINION) then
-		d(CA.colAld:Colorize("     Aldmeri Dominion") .. CA.colWht:Colorize(": ") .. ADlockCol:Colorize("Unlocked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. ADlockCol:Colorize(ICAccessCounterAD) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsAD))
+		d(CA.colAld:Colorize(GetString(SI_CYRODIIL_ALERT_AD_NAME)) .. CA.colWht:Colorize(": ") .. ADlockCol:Colorize(GetString(SI_CYRODIIL_ALERT_UNLOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. ADlockCol:Colorize(ICAccessCounterAD) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsAD))
 	else
-		d(CA.colAld:Colorize("     Aldmeri Dominion") .. CA.colWht:Colorize(": ") .. ADlockCol:Colorize("Locked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. ADlockCol:Colorize(ICAccessCounterAD) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsAD))
+		d(CA.colAld:Colorize(GetString(SI_CYRODIIL_ALERT_AD_NAME)) .. CA.colWht:Colorize(": ") .. ADlockCol:Colorize(GetString(SI_CYRODIIL_ALERT_LOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. ADlockCol:Colorize(ICAccessCounterAD) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsAD))
 	end
 	if not IsCollectibleUnlocked(GetImperialCityCollectibleId()) then
 		EPlockCol = CA.colGry
@@ -465,9 +474,9 @@ function CA.dumpImperial()
 		EPlockCol = CA.colGrn
 	end
 	if DoesAllianceHaveImperialCityAccess(CA.campaignId,ALLIANCE_EBONHEART_PACT) then
-		d(CA.colEbo:Colorize("     Ebonheart Pact") .. CA.colWht:Colorize(": ") .. EPlockCol:Colorize("Unlocked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. EPlockCol:Colorize(ICAccessCounterEP) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsEP))
+		d(CA.colEbo:Colorize(GetString(SI_CYRODIIL_ALERT_EP_NAME)) .. CA.colWht:Colorize(": ") .. EPlockCol:Colorize(GetString(SI_CYRODIIL_ALERT_UNLOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. EPlockCol:Colorize(ICAccessCounterEP) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsEP))
 	else
-		d(CA.colEbo:Colorize("     Ebonheart Pact") .. CA.colWht:Colorize(": ") .. EPlockCol:Colorize("Locked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. EPlockCol:Colorize(ICAccessCounterEP) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsEP))
+		d(CA.colEbo:Colorize(GetString(SI_CYRODIIL_ALERT_EP_NAME)) .. CA.colWht:Colorize(": ") .. EPlockCol:Colorize(GetString(SI_CYRODIIL_ALERT_LOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. EPlockCol:Colorize(ICAccessCounterEP) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsEP))
 	end
 	if not IsCollectibleUnlocked(GetImperialCityCollectibleId()) then
 		DClockCol = CA.colGry
@@ -477,16 +486,16 @@ function CA.dumpImperial()
 		DClockCol = CA.colGrn
 	end
 	if DoesAllianceHaveImperialCityAccess(CA.campaignId,ALLIANCE_DAGGERFALL_COVENANT) then
-		d(CA.colDag:Colorize("     Daggerfall Covenant") .. CA.colWht:Colorize(": ") .. DClockCol:Colorize("Unlocked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. DClockCol:Colorize(ICAccessCounterDC) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsDC))
+		d(CA.colDag:Colorize(GetString(SI_CYRODIIL_ALERT_DC_NAME)) .. CA.colWht:Colorize(": ") .. DClockCol:Colorize(GetString(SI_CYRODIIL_ALERT_UNLOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. DClockCol:Colorize(ICAccessCounterDC) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsDC))
 	else
-		d(CA.colDag:Colorize("     Daggerfall Covenant") .. CA.colWht:Colorize(": ") .. DClockCol:Colorize("Locked") .. CA.colWht:Colorize(", Keeps Controlled: ") .. DClockCol:Colorize(ICAccessCounterDC) .. CA.colWht:Colorize(" of ") .. CA.colOng:Colorize(ICNumKeepsDC))
+		d(CA.colDag:Colorize(GetString(SI_CYRODIIL_ALERT_DC_NAME)) .. CA.colWht:Colorize(": ") .. DClockCol:Colorize(GetString(SI_CYRODIIL_ALERT_LOCKED)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_KEEP_CONTROLLED)) .. DClockCol:Colorize(ICAccessCounterDC) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. CA.colOng:Colorize(ICNumKeepsDC))
 	end
 	if (DoesAllianceHaveImperialCityAccess(CA.campaignId,myAlliance)) and (IsCollectibleUnlocked(GetImperialCityCollectibleId())) then
-		d(CA.colGrn:Colorize("     You currently have Imperial City access"))
+		d(CA.colGrn:Colorize(GetString(SI_CYRODIIL_ALERT_CURRENT_IMPERIAL)))
 	elseif IsCollectibleUnlocked(GetImperialCityCollectibleId()) then
-		d(CA.colRed:Colorize("     You do not have Imperial City access"))
+		d(CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL)))
 	else
-		d(CA.colGry:Colorize("     You do not have Imperial City access"))
+		d(CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL)))
 	end
 end
 
@@ -509,7 +518,7 @@ function CA.dumpDistricts()
 		EPcol = CA.colGrn
 	end
 	if IsCollectibleUnlocked(GetImperialCityCollectibleId()) then
-		d(CA.colGry:Colorize("Imperial Districts:"))
+		d(CA.colGry:Colorize(GetString(SI_CYRODIIL_ALERT_IMPERIAL_DISTRICTS)))
 		for i = 141,143 do
 			attTot = attTot + CA.ua[i][1]
 			local keepName = GetKeepName(i)
@@ -523,11 +532,11 @@ function CA.dumpDistricts()
 				end
 			elseif (CA.ua[i][1] == 1) then
 				if (CA.ua[i][2] == 1) then
-					d(CA.colAld:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colAld:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				elseif (CA.ua[i][2] == 2) then
-					d(CA.colEbo:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colEbo:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				elseif (CA.ua[i][2] == 3) then
-					d(CA.colDag:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colDag:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				end
 			end
 			if (CA.ua[i][2] == 1) then
@@ -554,11 +563,11 @@ function CA.dumpDistricts()
 				end
 			elseif (CA.ua[i][1] == 1) then
 				if (CA.ua[i][2] == 1) then
-					d(CA.colAld:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colAld:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				elseif (CA.ua[i][2] == 2) then
-					d(CA.colEbo:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colEbo:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				elseif (CA.ua[i][2] == 3) then
-					d(CA.colDag:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize("Under Attack!"))
+					d(CA.colDag:Colorize(keepName) .. CA.colWht:Colorize(" - ") .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_UNDER_ATTACK)))
 				end
 			end
 			if (CA.ua[i][2] == 1) then
@@ -573,11 +582,11 @@ function CA.dumpDistricts()
 			end
 		end
 		if (attTot == 0) then
-			d(CA.colWht:Colorize("     No districts are under attack"))
+			d(CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_NO_DISTRICT_UNDER_ATTACK)))
 		end
-		d(CA.colAld:Colorize("     Aldmeri Dominion") .. CA.colWht:Colorize(": Districts: ") .. CA.colOng:Colorize(aldNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize("Tel Var Bonus") .. CA.colWht:Colorize(": ") .. ADcol:Colorize("+"..aldTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
-		d(CA.colEbo:Colorize("     Ebonheart Pact") .. CA.colWht:Colorize(": Districts: ") .. CA.colOng:Colorize(eboNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize("Tel Var Bonus") .. CA.colWht:Colorize(": ") .. EPcol:Colorize("+"..eboTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
-		d(CA.colDag:Colorize("     Daggerfall Covenant") .. CA.colWht:Colorize(": Districts: ") .. CA.colOng:Colorize(dagNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize("Tel Var Bonus") .. CA.colWht:Colorize(": ") .. DCcol:Colorize("+"..dagTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
+		d(CA.colAld:Colorize(GetString(SI_CYRODIIL_ALERT_AD_NAME)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DISTRICTS)) .. CA.colOng:Colorize(aldNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize(GetString(SI_CYRODIIL_ALERT_TEL_VAR_BONUS)) .. CA.colWht:Colorize(": ") .. ADcol:Colorize("+"..aldTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
+		d(CA.colEbo:Colorize(GetString(SI_CYRODIIL_ALERT_EP_NAME)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DISTRICTS)) .. CA.colOng:Colorize(eboNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize(GetString(SI_CYRODIIL_ALERT_TEL_VAR_BONUS)) .. CA.colWht:Colorize(": ") .. EPcol:Colorize("+"..eboTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
+		d(CA.colDag:Colorize(GetString(SI_CYRODIIL_ALERT_DC_NAME)) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DISTRICTS)) .. CA.colOng:Colorize(dagNum) .. CA.colWht:Colorize(", ") .. CA.colTel:Colorize(GetString(SI_CYRODIIL_ALERT_TEL_VAR_BONUS)) .. CA.colWht:Colorize(": ") .. DCcol:Colorize("+"..dagTot.."%").. zo_strformat(" |t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds"))
 	end
 end
 
@@ -591,9 +600,9 @@ function CA.CampaignQueue(eventCode, campaignId, isGroup, position)
 
 	local campaignName = GetCampaignName(campaignId)
 	if (isGroup) then
-		queueType = " (Group)"
+		queueType = GetString(SI_CYRODIIL_ALERT_IS_GROUP)
 	elseif (not isGroup) then
-		queueType = " (Solo)"
+		queueType = GetString(SI_CYRODIIL_ALERT_IS_SOLO)
 	else
 	end
 
@@ -601,7 +610,7 @@ function CA.CampaignQueue(eventCode, campaignId, isGroup, position)
 		CA_ACE:CancelTimer(CA.timerIdTaken)
 	end
 
-	local queueText = CA.colGrn:Colorize(campaignName) .. CA.colWht:Colorize(" Queue Position: " .. position .. queueType)
+	local queueText = CA.colGrn:Colorize(campaignName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_QUEUE_POSITION) .. position .. queueType)
 	
 	if (CA.vars.chatOutput) then
 		d(queueText)
@@ -701,16 +710,44 @@ function CA.OnAllianceOwnerChanged(eventCode, keepId, battlegroundContext, ownin
 		CA_ACE:CancelTimer(CA.timerIdTaken)
 	end
 
-	local captureText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has captured ") .. oldCol:Colorize(keepName)
+	local captureText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_CAPTURED)) .. oldCol:Colorize(keepName)
+
+	if (CA.language == "jp") then
+		captureText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_CAPTURED), oldCol:Colorize(keepName), allianceCol:Colorize(allianceName))
+	end
+
 	local newTelvar
 	local oldTelvar
 	if keepType == KEEPTYPE_IMPERIAL_CITY_DISTRICT then
-		newTelvar = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(" in Districts  (Total ") .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
-		oldTelvar = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(" in Districts  (Total ") .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
-		newTelvar2 = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(" in Districts  (Total ") .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
-		oldTelvar2 = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(" in Districts  (Total ") .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
+		newTelvar = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
+		oldTelvar = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t16:16:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
+		newTelvar2 = allianceCol:Colorize(allianceName) .. CA.colGrn:Colorize(" +"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..ownTot+TVbonus.."%") .. CA.colWht:Colorize(")")
+		oldTelvar2 = oldCol:Colorize(GetAllianceName(oldAlliance)) .. CA.colRed:Colorize(" -"..TVbonus.."% ") .. zo_strformat("|t30:30:<<X:1>>|t", "EsoUI/Art/Currency/currency_telvar_32.dds") .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL)) .. CA.colTel:Colorize("+"..oldTot-TVbonus.."%") .. CA.colWht:Colorize(")")
 	end
 	
+	if (CA.language == "jp") then
+		newTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL),
+							allianceCol:Colorize(allianceName), 
+							CA.colGrn:Colorize(" +"..TVbonus.."% "),
+							"EsoUI/Art/Currency/currency_telvar.dds",
+							CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
+		oldTelvar = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL), 
+							oldCol:Colorize(GetAllianceName(oldAlliance)), 
+							CA.colGrn:Colorize(" -"..TVbonus.."% "),
+							"EsoUI/Art/Currency/currency_telvar.dds",
+							CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
+		newTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), 
+							allianceCol:Colorize(allianceName), 
+							CA.colGrn:Colorize(" +"..TVbonus.."% "),
+							"EsoUI/Art/Currency/currency_telvar_32.dds",
+							CA.colTel:Colorize("+"..ownTot+TVbonus.."%"))
+		oldTelvar2 = zo_strformat(GetString(SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2), 
+							oldCol:Colorize(GetAllianceName(oldAlliance)), 
+							CA.colGrn:Colorize(" -"..TVbonus.."% "),
+							"EsoUI/Art/Currency/currency_telvar_32.dds",
+							CA.colTel:Colorize("+"..oldTot-TVbonus.."%"))
+	end
+
 	if (CA.vars.chatOutput) then
 		d(captureText)
 		if (CA.vars.showTelvar) and keepType == KEEPTYPE_IMPERIAL_CITY_DISTRICT then
@@ -812,12 +849,12 @@ function CA.OnKeepUnderAttackChanged(eventCode, keepId, battlegroundContext, und
 		CA_ACE:CancelTimer(CA.timerId)
 	end
 
-	local uaText = allianceCol:Colorize(keepName) .. CA.colWht:Colorize(" is under attack!")
-	local notuaText = allianceCol:Colorize(keepName) .. CA.colWht:Colorize(" is no longer under attack")
-	local siegesTextAll = CA.colWht:Colorize("     Sieges: A:") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / D:") .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")")
-	local siegesTextAttDef = CA.colWht:Colorize("     Sieges: Att: ") .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(" / Def:") .. CA.colGrn:Colorize(defendSiege)
-	local siegesTextAlliance = CA.colWht:Colorize("     Sieges: AD: ") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", DC: ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", EP: ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")")
-	local siegesTextNone = CA.colWht:Colorize("     Sieges: None")
+	local uaText = allianceCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IS_UNDER_ATTACK))
+	local notuaText = allianceCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IS_NO_LONGER_UNDER_ATTACK))
+	local siegesTextAll = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_A)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_D)) .. CA.colGrn:Colorize(defendSiege) .. CA.colWht:Colorize("  (") .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(", ") .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(", ") .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")")
+	local siegesTextAttDef = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_ATT)) .. CA.colRed:Colorize(attackSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SLASH_DEF)) .. CA.colGrn:Colorize(defendSiege)
+	local siegesTextAlliance = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_AD)) .. CA.colAld:Colorize(adSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DC)) .. CA.colDag:Colorize(dcSiege) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EP)) .. CA.colEbo:Colorize(epSiege) .. CA.colWht:Colorize(")")
+	local siegesTextNone = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_SIEGES_NONE))
 	
 	if (underAttack) and (CA.vars.showAttack) then
 		if (CA.vars.chatOutput) then
@@ -910,8 +947,8 @@ function CA.OnGateChanged(eventCode, keepId, open)
 		do return end
 	end
 
-	local openText = CA.colWht:Colorize("The ") .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(" is open!")
-	local closedText = CA.colWht:Colorize("The ") .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(" is closed!")	
+	local openText = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_THE)) .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IS_OPEN))
+	local closedText = CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_THE)) .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_IS_CLOSED))	
 
 	if (open) then
 		if (CA.vars.chatOutput) then
@@ -971,8 +1008,13 @@ function CA.OnDeposeEmperor(eventCode, campaignId, emperorName, emperorAlliance,
 		homeCamp = ""
 	end
 
-	local abdicateText = homeCamp .. CA.colWht:Colorize("Emperor ") .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has abdicated!")
-	local deposeText = homeCamp .. CA.colWht:Colorize("Emperor ") .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has been deposed!")
+	local abdicateText = homeCamp .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EMPEROR)) .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_ABDICATED))
+	local deposeText = homeCamp .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EMPEROR)) .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_DEPOSED))
+
+	if (CA.language == "jp") then
+		abdicateText = zo_strformat(GetString(SI_CYRODIIL_ALERT_ABDICATED), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(emperorName));
+		deposeText = zo_strformat(GetString(SI_CYRODIIL_ALERT_DEPOSED), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(emperorName));
+	end
 
 	if (CA.vars.chatOutput) then
 		if (abdication) then
@@ -1027,8 +1069,12 @@ function CA.OnCoronateEmperor(eventCode, campaignId, emperorName, emperorAllianc
 		homeCamp = ""
 	end
 
-	local coronateText = homeCamp .. CA.colWht:Colorize("Emperor ") .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has been crowned Emperor!")
-	
+	local coronateText = homeCamp .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_EMPEROR)) .. CA.colGrn:Colorize(emperorName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_CROWNED_EMPEROR))
+
+	if (CA.language == "jp") then
+		coronateText = zo_strformat(GetString(SI_CYRODIIL_ALERT_CROWNED_EMPEROR), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(emperorName));
+	end
+
 	if (CA.vars.chatOutput) then
 		d(coronateText)
 	end
@@ -1102,13 +1148,22 @@ function CA.OnArtifactControlState(eventCode, artifactName, keepId, playerName, 
 		homeCamp = ""
 	end
 
-	local pickupText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has picked up ") .. CA.colOng:Colorize(artifactName)
-	local takenText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has taken ") .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(" from ") .. keepCol:Colorize(keepName)
-	local droppedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has dropped ") .. CA.colOng:Colorize(artifactName)
-	local capturedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has secured ") .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(" at ") .. keepCol:Colorize(keepName)
-	local returnedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" of ") .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has returned ") .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(" to ") .. keepCol:Colorize(keepName)
-	local timedoutText = homeCamp .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(" has returned to ") .. keepCol:Colorize(keepName) .. CA.colWht:Colorize(" (timed out)")
+	local pickupText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_PICKED_UP)) .. CA.colOng:Colorize(artifactName)
+	local takenText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_TAKEN)) .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_FROM)) .. keepCol:Colorize(keepName)
+	local droppedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_DROPPED)) .. CA.colOng:Colorize(artifactName)
+	local capturedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_SECURED)) .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_AT)) .. keepCol:Colorize(keepName)
+	local returnedText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_OF)) .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_RETURNED)) .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_TO)) .. keepCol:Colorize(keepName)
+	local timedoutText = homeCamp .. CA.colOng:Colorize(artifactName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_RETURNED_TO)) .. keepCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_TIMEOUT))
 	
+	if (CA.language == "jp") then
+		pickupText = zo_strformat(GetString(SI_CYRODIIL_ALERT_PICKED_UP), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(playerName), CA.colOng:Colorize(artifactName))
+		takenText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_TAKEN), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(playerName), keepCol:Colorize(keepName), CA.colOng:Colorize(artifactName))
+		droppedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_DROPPED), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(playerName), CA.colOng:Colorize(artifactName))
+		capturedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_SECURED), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(playerName), keepCol:Colorize(keepName), CA.colOng:Colorize(artifactName))
+		returnedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_RETURNED), homeCamp, allianceCol:Colorize(allianceName), CA.colGrn:Colorize(playerName), CA.colOng:Colorize(artifactName), keepCol:Colorize(keepName))
+		timedoutText = zo_strformat(GetString(SI_CYRODIIL_ALERT_TIMEOUT), homeCamp, CA.colOng:Colorize(artifactName), keepCol:Colorize(keepName))
+	end
+
 	if (controlEvent == OBJECTIVE_CONTROL_EVENT_FLAG_TAKEN) then	
 		if (keepId == 0) then
 			if (CA.vars.chatOutput) then
@@ -1255,9 +1310,15 @@ function CA.OnObjectiveControlState(eventCode, keepId, objectiveId, battleground
 		do return end
 	end
 
-	local capturedText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has captured ") .. CA.colOng:Colorize(objectiveName)
-	local recapturedText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has recaptured ") .. CA.colOng:Colorize(objectiveName)
-	local neutralText = CA.colOng:Colorize(objectiveName) .. CA.colWht:Colorize(" has fallen to ") .. CA.colGrn:Colorize("No Control")
+	local capturedText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_CAPTURED)) .. CA.colOng:Colorize(objectiveName)
+	local recapturedText = allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_RECAPTURED)) .. CA.colOng:Colorize(objectiveName)
+	local neutralText = CA.colOng:Colorize(objectiveName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_FALLEN)) .. CA.colGrn:Colorize(GetString(SI_CYRODIIL_ALERT_NO_CONTROL))
+
+	if (CA.language == "jp") then
+		capturedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_CAPTURED2), allianceCol:Colorize(allianceName), CA.colOng:Colorize(objectiveName))
+		recapturedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_RECAPTURED), allianceCol:Colorize(allianceName), CA.colOng:Colorize(objectiveName))
+		neutralText = zo_strformat(GetString(SI_CYRODIIL_ALERT_NEUTRAL), CA.colOng:Colorize(objectiveName))
+	end
 
 	if (objectiveType == OBJECTIVE_CAPTURE_AREA) then
 
@@ -1357,7 +1418,11 @@ function CA.OnClaimKeep(eventCode, campaignId, keepId, guildName, playerName)
 		homeCamp = ""
 	end
 
-	local claimText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(" has claimed ") .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(" for ") .. CA.colBlu:Colorize(guildName)
+	local claimText = homeCamp .. CA.colGrn:Colorize(playerName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_CLAIMED)) .. allianceCol:Colorize(keepName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_FOR)) .. CA.colBlu:Colorize(guildName)
+
+	if (CA.language == "jp") then
+		claimText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_CLAIMED), homeCamp, CA.colGrn:Colorize(playerName), CA.colBlu:Colorize(guildName), allianceCol:Colorize(keepName))
+	end
 
 	if (CA.vars.chatOutput) then
 		d(claimText)
@@ -1403,12 +1468,16 @@ function CA.OnImperialAccessGained(eventCode, campaignId, alliance)
 
 	local myAccess
 	if (DoesAllianceHaveImperialCityAccess(CA.campaignId,myAlliance)) and (IsCollectibleUnlocked(GetImperialCityCollectibleId())) then
-		myAccess = CA.colWht:Colorize("     (You currently have Imperial City access)")
+		myAccess = CA.colWht:Colorize("     (" .. GetString(SI_CYRODIIL_ALERT_CURRENT_IMPERIAL) .. ")")
 	else
-		myAccess = CA.colGry:Colorize("     (You do not have Imperial City access)")
+		myAccess = CA.colGry:Colorize("     (" .. GetString(SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL) .. ")")
 	end
 
-	local icgainedText = homeCamp .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has gained access to ") .. CA.colGrn:Colorize("Imperial City") .. CA.colWht:Colorize("!")
+	local icgainedText = homeCamp .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS)) .. CA.colGrn:Colorize(GetString(SI_CYRODIIL_ALERT_IMPERIAL_CITY2)) .. CA.colWht:Colorize("!")
+
+	if (CA.language == "jp") then
+		icgainedText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS), allianceCol:Colorize(allianceName))
+	end
 	
 	if (CA.vars.chatOutput) then
 		d(icgainedText)
@@ -1455,12 +1524,16 @@ function CA.OnImperialAccessLost(eventCode, campaignId, alliance)
 	
 	local myAccess
 	if (DoesAllianceHaveImperialCityAccess(CA.campaignId,myAlliance)) and (IsCollectibleUnlocked(GetImperialCityCollectibleId())) then
-		myAccess = CA.colWht:Colorize("     (You currently have Imperial City access)")
+		myAccess = CA.colWht:Colorize("     (" .. GetString(SI_CYRODIIL_ALERT_CURRENT_IMPERIAL) .. ")")
 	else
-		myAccess = CA.colGry:Colorize("     (You do not have Imperial City access)")
+		myAccess = CA.colGry:Colorize("     (" .. GetString(SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL) .. ")")
 	end
 
-	local iclostText = homeCamp .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(" has lost access to ") .. CA.colRed:Colorize("Imperial City") .. CA.colWht:Colorize("!")
+	local iclostText = homeCamp .. allianceCol:Colorize(allianceName) .. CA.colWht:Colorize(GetString(SI_CYRODIIL_ALERT_HAS_LOST_ACCESS)) .. CA.colRed:Colorize(GetString(SI_CYRODIIL_ALERT_IMPERIAL_CITY2)) .. CA.colWht:Colorize("!")
+
+	if (CA.language == "jp") then
+		iclostText = zo_strformat(GetString(SI_CYRODIIL_ALERT_HAS_LOST_ACCESS), allianceCol:Colorize(allianceName))
+	end
 
 	if (CA.vars.chatOutput) then
 		d(iclostText)
@@ -1660,10 +1733,10 @@ function CAslash(text )
 	if (text == "out") then
 		if (CA.vars.outside) then
 			CA.vars.outside = false
-			d("Notifications outside of Cyrodiil turned OFF.")
+			d(GetString(SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF))
 		else
 			CA.vars.outside = true
-			d("Notifications outside of Cyrodiil turned ON.")
+			d(GetString(SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON))
 		end
 	end
 	if (text == "clear") then
@@ -1672,7 +1745,7 @@ function CAslash(text )
 		CA_ACE:ClearNotifyExtra()
 	end
 	if (text == "help") then
-		d("Avalable slash commands: show, hide, status, attacks, imperial, ic, init, out, clear, help")
+		d(GetString(SI_CYRODIIL_ALERT_HELP))
 	end
 end -- CAslash
  
