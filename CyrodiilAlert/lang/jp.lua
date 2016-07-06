@@ -8,7 +8,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_LANG", "jp")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_INIT_TEXT", "シロディールアラートが初期化されました")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CAMP_WELCOME", "ようこそ ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CAMP_HOME", "ホームキャンペーン:")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CURRENT_IMPERIAL", "インペラルシティへのアクセス権を既に所有しています")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CURRENT_IMPERIAL", "インペラルシティへのアクセス権を所有しています")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_DO_NOT_HAVE_IMPERIAL", "インペラルシティへのアクセス権がありません")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTSIDE_CYRODIIL", "シロディールの外の通知はオフです")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CHAT_OUTPUT_ON", "チャット出力はオンです")
@@ -32,10 +32,9 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_SIEGES_NONE", "     包囲攻撃: なし")
 -- dumpImperial
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY", "インペラルシティ:")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_AD_NAME", "     アルドメリ・ドミニオン")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_UNLOCKED", "アンロック中")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_UNLOCKED", "解除")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_KEEP_CONTROLLED", ", 支配下を維持している: ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_OF", " of ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCKED", "ロック中")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCKED", "固定")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_EP_NAME", "     エボンハート・パクト")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_DC_NAME", "     ダガーフォール・カバナント")
 
@@ -50,15 +49,15 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_SOLO", " (ソロ)")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_QUEUE_POSITION", " キューの位置: ")
 
 -- OnAllianceOwnerChanged
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED", "<<1>> が <<2>> を占領しました ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL", " in 地域  (合計 ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED", "<<1>> は <<2>> によって占領されました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL", "<<1>> <<2>> |t16:16:<<X:3>>|t (合計 <<4>>)")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IN_DISTRICTS_TOTAL2", "<<1>> <<2>> |t30:30:<<X:3>>|t (合計 <<4>>)")
 
 -- OnKeepUnderAttackChanged
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_UNDER_ATTACK", " が攻撃されています！")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_NO_LONGER_UNDER_ATTACK", " はもう攻撃されていません")
 
 -- OnGateChanged
-ZO_CreateStringId("SI_CYRODIIL_ALERT_THE", "The ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_OPEN", " が開いています！")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IS_CLOSED", " が閉まっています！")
 
@@ -71,220 +70,219 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_DEPOSED", " が宣誓しました！")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_CROWNED_EMPEROR", " が皇帝に就任しました！")
 
 -- OnArtifactControlState
-ZO_CreateStringId("SI_CYRODIIL_ALERT_PICKED_UP", " has picked up ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_TAKEN", " has taken ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_FROM", " from ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_DROPPED", " has dropped ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_SECURED", " has secured ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_AT", " at ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RETURNED", " has returned ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_TO", " to ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RETURNED_TO", " has returned to ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_TIMEOUT", " (タイムアウト)")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_PICKED_UP", "<<1>> <<2>> の <<3>> が <<4>> を獲得しました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_TAKEN", "<<1>> <<2>> の <<3>> が <<4>> から <<5>> を奪取しました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_DROPPED", "<<1>> <<2>> の <<3>> が <<4>> を落としました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_SECURED", "<<1>> <<2>> の <<3>> が <<4>> で <<5>> を守りました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RETURNED", "<<1>> <<2>> の <<3>> が <<4>> を <<5>> に戻しました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_TIMEOUT", "<<1>> <<2>> が <<3>> に戻されました（タイムアウト）")
 
 -- OnObjectiveControlState
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RECAPTURED", " has recaptured ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_FALLEN", " has fallen to ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_CONTROL", "支配なし")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CAPTURED2", "<<1>> が <<2>> を占領されました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_RECAPTURED", "<<1>> が <<2>> を再占領しました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_FALLEN", "<<1>> が　<<2>> を has fallen to ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NO_CONTROL", "<<1>> は 支配なしに落ちました")
 
 -- OnClaimKeep
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CLAIMED", " has claimed ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_FOR", " for ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CLAIMED", "<<1>> <<2>> は <<3>> の <<4>> を主張しました"
 
 -- OnImperialAccessGained
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS", " has gained access to ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS", "<<1>> はインペリアルシティへのアクセス権を手にいれました！")
 
 -- OnImperialAccessLost
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_LOST_ACCESS", " has lost access to ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_LOST_ACCESS", "<<1>> はインペリアルシティへのアクセス権を失いました")
 
 -- CAslash
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF", "Notifications outside of Cyrodiil turned OFF.")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON", "Notifications outside of Cyrodiil turned ON.")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_HELP", "Avalable slash commands: show, hide, status, attacks, imperial, ic, init, out, clear, help")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF", "シロディールの外の通知はオフになりました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON", "シロディールの外の通知はオンになりました")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_HELP", "スラッシュコマンドが利用可能です: show, hide, status, attacks, imperial, ic, init, out, clear, help")
 
 
 
 
 --- CyrodiilAlertConfig.lua
 ZO_CreateStringId("SI_CYRODIIL_ALERT_DISPLAY_NAME", "Cyrodiil Alert 2")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_CONFIG", "Config")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_GENERAL_OPTIONS", "General Options")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_CONFIG", "設定")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_GENERAL_OPTIONS", "一般オプション")
 
 -- Notification Delay
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_DELAY_NAME", "Notification Delay")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_DELAY_TOOLTIP", "Seconds for which the notification will remain on screen")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_DELAY_NAME", "通知遅延")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_DELAY_TOOLTIP", "通知が画面に残る秒数")
 
 -- Output to chat
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTPUT_CHAT_NAME", "Output to Chat")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTPUT_CHAT_TOOLTIP", "Also outputs the notifications to your chat window")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTPUT_CHAT_NAME", "チャット出力")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTPUT_CHAT_TOOLTIP", "チャットウィンドウにも通知を表示する")
 
 -- On-Screen Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ON_SCREEN_NOTIFICATION_NAME", "On-Screen Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ON_SCREEN_NOTIFICATION_TOOLTIP", "Disabled: No notifications on screen (combined with Output to Chat option allows notifications only in chat)\nESO UI: Display notifications using ESO's built-in announcement system\nCA UI: Display notifications in CyrodiilAlert's custom alert window")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ON_SCREEN_NOTIFICATION_NAME", "オンスクリーン通知")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ON_SCREEN_NOTIFICATION_TOOLTIP", "Disabled: スクリーンに通知を表示しない\nESO UI: ESOのビルドインのアナウンスシステムを使用して通知を表示する\nCA UI: シロディールアラートのカスタムウィンドウで通知を表示する")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ON_SCREEN_NOTIFICATION_DISABLED", "Disabled")
 
 -- Sound
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SOUND_NAME", "     Sound")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SOUND_TOOLTIP", "Enable notification sounds when using ESO UI")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SOUND_NAME", "     音")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SOUND_TOOLTIP", "ESOのUIを使った音の通知を有効にする")
 
 -- Enable Notifications inside IC
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_INSIDE_IC_NAME", "Enable Notifications Inside Imperial City")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_INSIDE_IC_TOOLTIP", "Get notifications for Cyrodiil when you are in the Imperial City")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_INSIDE_IC_NAME", "インペリアルシティの中で通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_INSIDE_IC_TOOLTIP", "インペリアルシティの中にいるときにシロディールの通知を取得する")
 
 -- Enable Notifications outside Cyrodiil
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_OUTSIDE_CY_NAME", "Enable Notifications Outside Cyrodiil")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_OUTSIDE_CY_TOOLTIP", "Get notifications when you are out of Cyrodiil")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_OUTSIDE_CY_NAME", "シロディールの外部で通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_NOTIFICATION_OUTSIDE_CY_TOOLTIP", "シロディールの外にいる時に通知を取得する")
 
 -- Disable default eso notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_NAME", "Disable Default ESO Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_TOOLTIP", "Do not show the vanilla UI notifications for Artifact Gates, Emperors, Elder Scrolls, and Imperial City (combined with related Notification Options below allows use of CA notifications instead)")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_NAME", "デフォルトのESO通知を無効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_TOOLTIP", "アーティファクトゲート、皇帝、エルダースクロールのバニラUI通知を表示しない(CA通知の代わりに下記の関連するオプションと結合される)")
 
 -- Disable default notification outside cyrodiil
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_OUTSIDE_CY_NAME", "     Disable Default Notifications Outside Cyrodiil")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_OUTSIDE_CY_TOOLTIP", "Do not show the vanilla UI notifications even if CA is disabled when out of Cyrodiil")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_OUTSIDE_CY_NAME", "     シロディール外のデフォルト通知を無効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DISABLE_DEFAULT_NOTIFICATION_OUTSIDE_CY_TOOLTIP", "CAが無効かどうかに関わらず、シロディールの外でバニラUI通知を表示しない")
 
 -- Redirect default notification to chat
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_DEFAULT_NOTIFICATION_TO_CHAT_NAME", "     Redirect Default Notifications to Chat")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_DEFAULT_NOTIFICATION_TO_CHAT_TOOLTIP", "Force the vanilla UI notifications to appear in the chat window")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_DEFAULT_NOTIFICATION_TO_CHAT_NAME", "     デフォルト通知をチャットにリダイレクトする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_DEFAULT_NOTIFICATION_TO_CHAT_TOOLTIP", "バニラUI通知をチャットウィンドウに強制的に表示する")
 
 -- Show initialization message
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_SHOW_INIT_MESSAGE_NAME", "Show Initialization Message")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_SHOW_INIT_MESSAGE_TOOLTIP", "When you enter Cyrodiil, show Campaign Name, current Keep Status, Imperial City access, and Imperial District status in the chat window")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_SHOW_INIT_MESSAGE_NAME", "初期化メッセージを表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REDIRECT_SHOW_INIT_MESSAGE_TOOLTIP", "シロディールに入った時に、キャンペーン名・現在の維持状況・インペリアルシティへのアクセス・帝国地域の状況をチャットウィンドウに表示する")
 
 -- Use alliance colors
-ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_NAME", "Use Alliance Colors")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_TOOLTIP", "Display alliance names in their colors; ")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_AD_NAME", "Aldmeri Dominion")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_DC_NAME", "Daggerfall Covenant")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_EP_NAME", "Ebonheart Pact")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_NAME", "アライアンス色を使用する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_TOOLTIP", "色付きでアライアンス名を表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_AD_NAME", "アルドメリ・ドミニオン")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_DC_NAME", "ダガーフォール・カバナント")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_USE_ALLIANCE_COLORS_EP_NAME", "エボンハート・パクト")
 
 -- Lock/Unlock
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCK_UNLOCK_NAME", "Lock/Unlock")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCK_UNLOCK_TOOLTIP", "Lock/Unlock the alert window")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCK_UNLOCK_NAME", "固定/解除")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LOCK_UNLOCK_TOOLTIP", "警告ウィンドウを固定/解除")
 
 -- Keep status
-ZO_CreateStringId("SI_CYRODIIL_ALERT_KEEP_STATUS", "Keep Status")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_KEEP_STATUS", "保持中施設状況")
 
 -- Reinitialize
-ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TITLE", "Reinitialize")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TITLE", "再初期化")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_REINITIALIZE_TEXT", "also available via '/ca init'")
 
 -- Update Status
-ZO_CreateStringId("SI_CYRODIIL_ALERT_UPDATE_STATUS_NAME", "Update Status")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_UPDATE_STATUS_TOOLTIP", "Reinitialize the add-on and update keep and resource ownership for current Cyrodiil campaign")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_DUBIOUS_OUTSIDE_CY_WARNING", "Dubious outside Cyrodiil")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_UPDATE_STATUS_NAME", "更新状況")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_UPDATE_STATUS_TOOLTIP", "アドオンを再初期化し、保持中施設と現在のシロディールキャンペーンのリソースを更新する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_DUBIOUS_OUTSIDE_CY_WARNING", "シロディールの外が疑わしい")
 
 -- Output status to chat
-ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TITLE", "Output Status to Chat")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TITLE", "チャットに状況を出力")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_OUTPUT_STATUS_TO_CHAT_TEXT", "also available via '/ca attacks' and '/ca status'")
 
 -- List attacks
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_ATTACKS_NAME", "List Attacks")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_ATTACKS_TOOLTIP", "Output list of keeps and resources under attack")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_ATTACKS_NAME", "攻撃の一覧")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_ATTACKS_TOOLTIP", "攻撃されている保持中施設とリソースの一覧を出力する")
 
 -- List status
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_STATUS_NAME", "List Status")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_STATUS_TOOLTIP", "Output ownership and attack status of all keeps and resources")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_STATUS_NAME", "状況の一覧")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_LIST_STATUS_TOOLTIP", "全ての保持中施設とリソースの、所有権と攻撃状況を出力する")
 
 -- Imperial City
-ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TITLE", "Imperial City")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TITLE", "インペリアルシティ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY_TEXT", "also available via '/ca ic', '/ca ic all', '/ca ic access', or '/ca ic districts'")
 
 -- Access & Districts
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ACCESS_DISTRICTS_NAME", "Access & Districts")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ACCESS_DISTRICTS_TOOLTIP", "Output status of Imperial City access and district control")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ACCESS_DISTRICTS_NAME", "アクセスと地域")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ACCESS_DISTRICTS_TOOLTIP", "インペリアルシティと地域の支配状況を出力する")
 
 -- Notification Options
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OPTIONS_NAME", "Notification Options")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OPTIONS_NAME", "通知オプション")
 
 -- Enable Alliance Owner Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ALLIANCE_OWNER_NOTIFICATION_NAME", "Enable Alliance Owner Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ALLIANCE_OWNER_NOTIFICATION_TOOLTIP", "Get notifications about keep/resource alliance owner changes")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ALLIANCE_OWNER_NOTIFICATION_NAME", "アライアンスの占領通知を有効にする")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ALLIANCE_OWNER_NOTIFICATION_TOOLTIP", "アライアンスが施設を占領した時に通知を受け取る")
 
 -- Notification Importance
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_IMPORTANCE_NAME", "     Notification Importance")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_IMPORTANCE_TOOLTIP", "Major: Alliance ownership changes are shown as major events in the ESO UI\nMinor: Alliance ownership changes are shown as minor events in the ESO UI")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_IMPORTANCE_NAME", "     重要な通知")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_IMPORTANCE_TOOLTIP", "Major(メジャー): アライアンスの所有権の変化がESO UIでメジャーなイベントとして表示される\nMinor(マイナー): アライアンスの所有権の変化がESO UIのマイナーなイベントとして表示される")
 
 -- Enable Attack Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_NOTIFICATION_NAME", "Enable Attack Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_NOTIFICATION_TOOLTIP", "Get notifications about attacks")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_NOTIFICATION_NAME", "攻撃通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_NOTIFICATION_TOOLTIP", "攻撃に関する通知を受け取る")
 
 -- Show Attack/Defence Sieges
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ATTACK_DEFENCE_NAME", "     Show Attack/Defense Sieges")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ATTACK_DEFENCE_TOOLTIP", "Show siege weapon numbers by total attacking/defending")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ATTACK_DEFENCE_NAME", "     攻撃/守備の包囲攻撃を表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ATTACK_DEFENCE_TOOLTIP", "全体で攻撃/守備している包囲攻撃武器の数を表示する")
 
 -- Show Sieges by Alliance
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_SIEGES_BY_ALLIANCE_NAME", "     Show Sieges by Alliance")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_SIEGES_BY_ALLIANCE_TOOLTIP", "Show siege weapon numbers by alliance")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_SIEGES_BY_ALLIANCE_NAME", "アライアンスによる包囲攻撃を表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_SIEGES_BY_ALLIANCE_TOOLTIP", "アライアンスによる包囲攻撃武器の数を表示する")
 
 -- Enable Attack Ending Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_ENDING_NOTIFICATIONS_NAME", "Enable Attack Ending Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_ENDING_NOTIFICATIONS_TOOLTIP", "Get notifications about attacks ending")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_ENDING_NOTIFICATIONS_NAME", "攻撃終了通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_ATTACK_ENDING_NOTIFICATIONS_TOOLTIP", "攻撃終了に関する通知を受け取る")
 
 -- Enable Claim Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_CLAIM_NOTIFICATION_NAME", "Enable Claim Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_CLAIM_NOTIFICATION_TOOLTIP", "Get notifications about guilds claiming keeps")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_CLAIM_NOTIFICATION_NAME", "ギルドの権利に関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_CLAIM_NOTIFICATION_TOOLTIP", "ギルドが権利を保持している施設の通知を受け取る")
 
 -- Enable Emperor Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_NAME", "Enable Emperor Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_TOOLTIP", "Get notifications about Emperors")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_NAME", "皇帝に関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_TOOLTIP", "皇帝に関する通知を受け取る")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_WARNING", "無効にされない限りデフォルトのUI通知を上書きします")
 
 -- Enable Imperial City Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_NAME", "Enable Imperial City Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_TOOLTIP", "Get notifications about Imperial City access")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_NAME", "インペリアルシティのアクセスに関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_TOOLTIP", "インペリアルシティのアクセスに関する通知を受け取る")
 
 -- Enable Queue Notification
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_QUEUE_NOTIFICATION_NAME", "Enable Queue Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_QUEUE_NOTIFICATION_TOOLTIP", "Get notifications when position in the Campaign Queue changes")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_QUEUE_NOTIFICATION_NAME", "キューに関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_QUEUE_NOTIFICATION_TOOLTIP", "キャンペーンキューの位置が変化した時に通知を受け取る")
 
 -- Show Only My Alliance
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_NAME", "Show Only My Alliance")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP", "Get keep and resource notifications for ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_NAME", "自身のアライアンスだけ表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP", "<<1>> の保持施設とリソースの通知のみ受け取る") -- 英語版注意！
 
 -- Objective Options
-ZO_CreateStringId("SI_CYRODIIL_ALERT_OBJECTIVE_OPTIONS_NAME", "Objective Options")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_OBJECTIVE_OPTIONS_NAME", "施設オプション")
 
 -- Enable Town Capture Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_TOWN_CAPTURE_NOTIFICATION_NAME", "Enable Town Capture Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_TOWN_CAPTURE_NOTIFICATION_TOOLTIP", "Get notifications about Cyrodiil town capture")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_TOWN_CAPTURE_NOTIFICATION_NAME", "町の占領通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_TOWN_CAPTURE_NOTIFICATION_TOOLTIP", "シロディールの町の占領に関する通知を受け取る")
 
 -- Enable District Capture Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_DISTRICT_CAPTURE_NOTIFICATION_NAME", "Enable District Capture Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_DISTRICT_CAPTURE_NOTIFICATION_TOOLTIP", "Get notifications about Imperial City district capture")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_DISTRICT_CAPTURE_NOTIFICATION_NAME", "地域の占領通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_DISTRICT_CAPTURE_NOTIFICATION_TOOLTIP", "インペリアルシティの地域の占領に関する通知を受け取る")
 
 -- Show District Capture in Cyrodiil
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_CAPTURE_IN_CY_NAME", "     Show District Capture in Cyrodiil")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_CAPTURE_IN_CY_TOOLTIP", "Get notifications for Imperial District capture when in Cyrodiil")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_CAPTURE_IN_CY_NAME", "     シロディール内の地域の占領を表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_CAPTURE_IN_CY_TOOLTIP", "シロディールの中にいる時に帝国地域の占領に関する通知を受け取る")
 
 -- Show Tel Var Capture Bonus
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TEL_VAR_CAPTURE_BONUS_NAME", "     Show Tel Var Capture Bonus")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TEL_VAR_CAPTURE_BONUS_TOOLTIP", "Show the changes in the District Tel Var bonus")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TEL_VAR_CAPTURE_BONUS_NAME", "     テルバー占領ボーナスを表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TEL_VAR_CAPTURE_BONUS_TOOLTIP", "地域のテルバーボーナスの変化を表示する")
 
 -- Enable Indiviual Flag Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_INDIVIUAL_FLAG_NOTIFICATION_NAME", "Enable Individual Flag Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_INDIVIUAL_FLAG_NOTIFICATION_TOOLTIP", "Get notifications about alliances securing individual keep flags")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_INDIVIUAL_FLAG_NOTIFICATION_NAME", "独立フラグの通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_INDIVIUAL_FLAG_NOTIFICATION_TOOLTIP", "アライアンスの独立フラグの保護に関する通知を受け取る")
 
 -- Show Resource Flags
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_RESOURCE_FLAGS_NAME", "     Show Resource Flags")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_RESOURCE_FLAGS_TOOLTIP", "Get notifications for flags at Farms, Mines, and Lumbermills")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_RESOURCE_FLAGS_NAME", "     リソースフラグを表示する")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_RESOURCE_FLAGS_TOOLTIP", "農場・鉱山・製材所のフラグに関する通知を受け取る")
 
 -- Show Town Flags
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TOWN_FLAGS_NAME", "     Show Town Flags")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TOWN_FLAGS_TOOLTIP", "Get notifications for individual flags in Towns")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TOWN_FLAGS_NAME", "     町のフラグを表示")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_TOWN_FLAGS_TOOLTIP", "町の独立フラグに関する通知を受け取る")
 
 -- Show District Flags
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_FLAGS_NAME", "     Show District Flags")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_FLAGS_TOOLTIP", "Get notifications for flags in Imperial City Districts")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_FLAGS_NAME", "     地域のフラグを表示")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_FLAGS_TOOLTIP", "インペリアルシティの地域のフラグに関する通知を受け取る")
 
 -- Show Flags at Neutral
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_NAME", "     Show Flags at Neutral")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP1", "Get notifications when a flag falls to\n")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP2", " during capture")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_NAME", "     中立のフラグを表示")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP", "占領中にフラグが <<1>> に落ちた時に通知を受け取る")
 
 -- Enable Gate Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_NAME", "Enable Gate Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_TOOLTIP", "Get notifications about Artifact Gates")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_NAME", "門に関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_TOOLTIP", "アーティファクトの門に関する通知を受け取る")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_WARNING", "無効にされない限りデフォルトのUI通知を上書きします")
+
 
 -- Enable Scroll Notifications
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_NAME", "Enable Scroll Notifications")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_TOOLTIP", "Get notifications about Elder Scrolls")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_NAME", "呪文に関する通知を有効にする")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_TOOLTIP", "エルダー呪文に関する通知を受け取る")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_WARNING", "無効にされない限りデフォルトのUI通知を上書きします")

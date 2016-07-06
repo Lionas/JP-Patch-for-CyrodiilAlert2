@@ -280,7 +280,9 @@ function CA.CreateConfigMenu()
 		{
 			type = "checkbox",
 			name = GetString(SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_NAME),
-			tooltip = GetString(SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP) .. GetAllianceName(GetUnitAlliance("player")) .. " only",
+------JP
+			tooltip = zo_strformat(GetString(SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP), GetAllianceName(GetUnitAlliance("player"))),
+------JP
 			getFunc = function() return CA.vars.onlyMyAlliance end,
 			setFunc = function(newValue) CA.vars.onlyMyAlliance = newValue;  end,
 		},
@@ -352,7 +354,9 @@ function CA.CreateConfigMenu()
 		{
 			type = "checkbox",
 			name = GetString(SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_NAME),
-			tooltip = GetString(SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP1) .. CA.colGrn:Colorize(GetString(SI_CYRODIIL_ALERT_NO_CONTROL)) .. GetString(SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP2),
+------JP
+			tooltip = zo_strformat(GetString(SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP), CA.colGrn:Colorize("No Control")),
+------JP
 			getFunc = function() return CA.vars.showFlagsNeutral end,
 			setFunc = function(newValue) CA.vars.showFlagsNeutral = newValue;  end,
 			disabled = function() return not CA.vars.showFlags end,

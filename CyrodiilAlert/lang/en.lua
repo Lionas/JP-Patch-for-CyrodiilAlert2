@@ -1,4 +1,4 @@
--- This file is part of CyrodiilAlert
+﻿-- This file is part of CyrodiilAlert
 ZO_CreateStringId("SI_CYRODIIL_ALERT", "CyrodiilAlert")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_LANG", "en")
 
@@ -92,6 +92,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_CLAIMED", " has claimed ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_FOR", " for ")
 
 -- OnImperialAccessGained
+ZO_CreateStringId("SI_CYRODIIL_ALERT_IMPERIAL_CITY2", "Imperial City")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_GAINED_ACCESS", " has gained access to ")
 
 -- OnImperialAccessLost
@@ -101,7 +102,6 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_HAS_LOST_ACCESS", " has lost access to ")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_OFF", "Notifications outside of Cyrodiil turned OFF.")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_NOTIFICATION_OUTSIDE_ON", "Notifications outside of Cyrodiil turned ON.")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_HELP", "Avalable slash commands: show, hide, status, attacks, imperial, ic, init, out, clear, help")
-
 
 
 
@@ -228,6 +228,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_CLAIM_NOTIFICATION_TOOLTIP", "Get no
 -- Enable Emperor Notification
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_NAME", "Enable Emperor Notifications")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_TOOLTIP", "Get notifications about Emperors")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_EMPEROR_NOTIFICATION_WARNING", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 -- Enable Imperial City Notification
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_IC_NOTIFICATION_NAME", "Enable Imperial City Notifications")
@@ -239,7 +240,7 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_QUEUE_NOTIFICATION_TOOLTIP", "Get no
 
 -- Show Only My Alliance
 ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_NAME", "Show Only My Alliance")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP", "Get keep and resource notifications for ")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_ONLY_MY_ALLIANCE_TOOLTIP", "Get keep and resource notifications for <<1>> only")
 
 -- Objective Options
 ZO_CreateStringId("SI_CYRODIIL_ALERT_OBJECTIVE_OPTIONS_NAME", "Objective Options")
@@ -278,13 +279,14 @@ ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_DISTRICT_FLAGS_TOOLTIP", "Get notifica
 
 -- Show Flags at Neutral
 ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_NAME", "     Show Flags at Neutral")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP1", "Get notifications when a flag falls to\n")
-ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP2", " during capture")
+ZO_CreateStringId("SI_CYRODIIL_ALERT_SHOW_FLAGS_AS_NEUTRAL_TOOLTIP", "Get notifications when a flag falls to\n <<1>> during capture")
 
 -- Enable Gate Notifications
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_NAME", "Enable Gate Notifications")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_TOOLTIP", "Get notifications about Artifact Gates")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_GATE_NOTIFICATION_WARNING", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
 -- Enable Scroll Notifications
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_NAME", "Enable Scroll Notifications")
 ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_TOOLTIP", "Get notifications about Elder Scrolls")
+!!!ZO_CreateStringId("SI_CYRODIIL_ALERT_ENABLE_SCROLL_NOTIFICATION_WARNING", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
